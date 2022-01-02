@@ -15,7 +15,7 @@ class GatewayController {
 
     private final GatewayService gatewayService;
 
-    @PostMapping(path = "/notifications/send",
+    @PostMapping(path = "/api/notifications/send",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public GatewayResponse sendMessageToUser(@RequestBody GatewayRequest gatewayRequest) {
