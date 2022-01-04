@@ -5,6 +5,7 @@ import com.manning.tutorial.notification.notificationgatewayservice.model.Gatewa
 import com.manning.tutorial.notification.notificationgatewayservice.services.GatewayService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,10 +16,15 @@ class GatewayController {
 
     private final GatewayService gatewayService;
 
-    @PostMapping(path = "/api/notifications/send",
+    @PostMapping(path = "/api/notifications/gateway",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public GatewayResponse sendMessageToUser(@RequestBody GatewayRequest gatewayRequest) {
         return gatewayService.send(gatewayRequest);
+    }
+
+    @GetMapping("/api/notifications/gateway/healthcheck")
+    public String healthCheck (){
+        return "UP";
     }
 }
